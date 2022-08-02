@@ -21,12 +21,9 @@ pipeline {
         }
         stage('移动文件') {
             steps {
-                script {
-                    sh "rm -rf /nginx_project/monitorManager"
-                    sh "mv monitorManager /nginx_project"
-                    echo "移动成功"
-                }
-                
+                sh "rm -rf /nginx_project/monitorManager"
+                sh "mv monitorManager /nginx_project"
+                echo "移动成功"
             }
         }
     }
