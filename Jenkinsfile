@@ -7,15 +7,21 @@ pipeline {
                 echo '分支为 test'
             }
         }
-        stage('Build') {
+        stage('安装依赖') {
             steps {
                 sh "yarn"
-                sh "cnpm run build"
-                echo "构建成功"
+                echo "安装依赖成功"
             }
         }
-        stage('Move') {
+        stage('打包文件') {
             steps {
+                sh "cnpm run build"
+                echo "打包文件成功"
+            }
+        }
+        stage('移动文件') {
+            steps {
+                sh "chmod 777 monitorManager"
                 sh "mv monitorManager /nginx_project"
                 echo "移动成功"
             }
