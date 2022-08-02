@@ -22,10 +22,8 @@ pipeline {
         stage('移动文件') {
             steps {
                 script {
-                    sh "if test -d /nginx_project/monitorManager 
-                        then echo '存在' 
-                        else mv monitorManager /nginx_project 
-                        fi"
+                    sh "rm -rf /nginx_project/monitorManager"
+                    sh "mv monitorManager /nginx_project"
                     echo "移动成功"
                 }
                 
