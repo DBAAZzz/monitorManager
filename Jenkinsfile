@@ -21,10 +21,13 @@ pipeline {
         }
         stage('移动文件') {
             steps {
-                out=sh(script: " -d '/nginx_project/monitorManager' ", returnStdout: true)
-                echo "out变量为${out}"
-                sh "mv monitorManager /nginx_project"
-                echo "移动成功"
+                script {
+                    out=sh(script: " -d '/nginx_project/monitorManager' ", returnStdout: true)
+                    echo "out变量为${out}"
+                    sh "mv monitorManager /nginx_project"
+                    echo "移动成功"
+                }
+                
             }
         }
     }
