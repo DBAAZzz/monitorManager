@@ -7,11 +7,6 @@ pipeline {
                 echo '分支为 test'
             }
         }
-        stage('Pre') {
-            steps {
-                rm -rf node_modules
-            }
-        }
         stage('Build') {
             steps {
                 yarn
