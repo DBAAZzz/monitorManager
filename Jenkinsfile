@@ -7,21 +7,16 @@ pipeline {
                 echo '分支为 test'
             }
         }
-
+        stage('Pre') {
+            steps {
+                rm -rf node_modules
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                
+                yarn
+                cnpm run build
+                echo "构建成功"
             }
         }
     }
