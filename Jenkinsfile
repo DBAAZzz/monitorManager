@@ -9,8 +9,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                yarn
-                cnpm run build
+                sh "yarn"
+                sh "cnpm run build"
                 echo "构建成功"
             }
         }
