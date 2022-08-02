@@ -38,7 +38,7 @@ export default defineConfig(({ command, mode }) => {
       }
     },
     build: {
-      outDir: 'dist',
+      outDir: 'monitorManager',
       rollupOptions: {
         input: ['./index.html'],
         output: {
