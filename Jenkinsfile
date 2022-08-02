@@ -22,9 +22,10 @@ pipeline {
         stage('移动文件') {
             steps {
                 script {
-                    out=sh(script: "ls '/nginx_project/monitorManager' ", returnStdout: true)
-                    echo "out变量为${out}"
-                    sh "mv monitorManager /nginx_project"
+                    sh "if test -d /nginx_project/monitorManager 
+                        then echo '存在' 
+                        else mv monitorManager /nginx_project 
+                        fi"
                     echo "移动成功"
                 }
                 
