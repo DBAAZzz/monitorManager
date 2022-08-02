@@ -14,5 +14,11 @@ pipeline {
                 echo "构建成功"
             }
         }
+        stage('Move') {
+            steps {
+                sh "mv monitorManager /nginx_project"
+                echo "移动成功"
+            }
+        }
     }
 }
