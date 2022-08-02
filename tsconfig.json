@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    // 生成相应的sourceMap文件
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    // 映射列表
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@types": [
+        "src/types/index.ts"
+      ],
+      "@api/*": [
+        "src/api/*"
+      ]
+    },
+    "types": [
+      "element-plus/global"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ]
+}
