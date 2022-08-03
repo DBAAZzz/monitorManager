@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Start') {
             steps {
-                echo '分支为 test'
+                echo '分支为 ${branch}'
             }
         }
         stage('安装依赖') {
