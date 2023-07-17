@@ -1,8 +1,11 @@
+
 <script setup lang="ts">
 </script>
 
 <template>
-  <div class="issue_board">我是issueBoard</div>
+  <div>
+    <p>Loading页面</p>
+  </div>
 </template>
 
 <style lang="scss" scoped>

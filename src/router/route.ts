@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 import { defineAsyncComponent } from 'vue'
+import Loading from '@/pages/loading.vue'
 
 export const staticRoutes: Array<RouteRecordRaw> = [
   {
@@ -24,7 +25,10 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '/home',
         name: 'home',
-        component: defineAsyncComponent(() => import(`@/pages/home/index.vue`)),
+        component: defineAsyncComponent({
+          loader: () => import(`@/pages/home/index.vue`),
+          loadingComponent: Loading
+        }),
         meta: {
           title: '首页'
         }
@@ -32,7 +36,10 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '/issueBoard',
         name: 'issueBoard',
-        component: defineAsyncComponent(() => import(`@/pages/issueBoard/index.vue`)),
+        component: defineAsyncComponent({
+          loader: () => import(`@/pages/issueBoard/index.vue`),
+          loadingComponent: Loading
+        }),
         meta: {
           title: 'issue 看板'
         }
@@ -40,7 +47,10 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '/issueList',
         name: 'issueList',
-        component: defineAsyncComponent(() => import(`@/pages/issueList/index.vue`)),
+        component: defineAsyncComponent({
+          loader: () => import(`@/pages/issueList/index.vue`),
+          loadingComponent: Loading
+        }),
         meta: {
           title: 'issue 列表',
           permissions: ['editer']
@@ -49,7 +59,10 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '/apiError',
         name: 'apiError',
-        component: defineAsyncComponent(() => import(`@/pages/apiError/index.vue`)),
+        component: defineAsyncComponent({
+          loader: () => import(`@/pages/apiError/index.vue`),
+          loadingComponent: Loading
+        }),
         meta: {
           title: 'api 错误列表'
         }
@@ -57,7 +70,10 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: '/errorReport',
         name: 'errorReport',
-        component: defineAsyncComponent(() => import(`@/pages/errorReport/index.vue`)),
+        component: defineAsyncComponent({
+          loader: () => import(`@/pages/errorReport/index.vue`),
+          loadingComponent: Loading
+        }),
         meta: {
           title: '错误报告'
         }
