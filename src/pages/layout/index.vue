@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Menu from './component/menu.vue';
-import Header from './component/header.vue';
+import Menu from './component/menu.vue'
+import Header from './component/header.vue'
 </script>
 
 <template>

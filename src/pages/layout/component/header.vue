@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import userPic from '@/assets/images/user.gif';
-
+import userPic from '@/assets/images/user.gif'
 </script>
 
 <template>

@@ -2,7 +2,7 @@ import { userState } from '../type'
 
 const state: userState = {
   name: 'DBAA',
-  isLogin: true,
+  isLogin: true
 }
 
 export default {
@@ -14,7 +14,7 @@ export default {
   },
   mutations: {
     setName(state: userState, name: string) {
-      state.name = name;
-    },
-  },
+      state.name = name
+    }
+  }
 }

@@ -7,7 +7,7 @@
         :placeholder="item.placeholder"
         v-model:value="item.value"
         @inputFunc="changeValueEvent($event, item)"
-        :ref="el => domRef.list[index] = el"
+        :ref="(el) => (domRef.list[index] = el)"
       ></Input>
       <Select
         v-if="item.type == 'select'"
@@ -15,7 +15,7 @@
         :placeholder="item.placeholder"
         :options="item.options"
         @changeFunc="changeValueEvent($event, item)"
-        :ref="el => domRef.list[index] = el"
+        :ref="(el) => (domRef.list[index] = el)"
       ></Select>
       <DatePicker
         v-if="item.type == 'dateRange'"
@@ -23,7 +23,7 @@
         :startPlaceholder="item.startPlaceholder"
         :endPlaceholder="item.endPlaceholder"
         @changeFunc="changeValueEvent($event, item)"
-        :ref="el => domRef.list[index] = el"
+        :ref="(el) => (domRef.list[index] = el)"
       ></DatePicker>
     </div>
     <div class="buttonBox">
@@ -44,7 +44,9 @@ import type { DefaultOption } from '@types'
 export default defineComponent({
   emits: ['search', 'reset'],
   components: {
-    Select, Input, DatePicker
+    Select,
+    Input,
+    DatePicker
   },
   props: {
     options: {
@@ -54,28 +56,28 @@ export default defineComponent({
     }
   },
   setup(props, { emit }) {
-    let searchParams: { [propName: string]: any } = {};
+    let searchParams: { [propName: string]: any } = {}
     let domRef = reactive<RefObject>({
       list: []
-    });
+    })
     let changeValueEvent = (value: any, item: DefaultOption): void => {
-      (item.key || []).forEach((keyName: string, index: number): void => {
+      ;(item.key || []).forEach((keyName: string, index: number): void => {
         if (item.key.length > 1 && value[0] && value[1]) {
-          searchParams[keyName] = value[index] || '';
+          searchParams[keyName] = value[index] || ''
         } else if (item.key.length == 1 && value) {
           searchParams[keyName] = value || ''
         } else {
-          delete searchParams[keyName];
+          delete searchParams[keyName]
         }
       })
     }
     let reset = () => {
       nextTick(() => {
         domRef.list.forEach((item: ComponentRef) => {
-          item.InputValue = null;
-        });
-        searchParams = {};
-        emit('reset');
+          item.InputValue = null
+        })
+        searchParams = {}
+        emit('reset')
       })
     }
     let search = () => {
@@ -83,9 +85,9 @@ export default defineComponent({
     }
     watchEffect(() => {
       props.options.forEach((item: DefaultOption): void => {
-        (item.key || []).forEach((keyName: string, index: number) => {
+        ;(item.key || []).forEach((keyName: string, index: number) => {
           if (item.key.length > 1 && item.value) {
-            searchParams[keyName] = item.value[index] || '';
+            searchParams[keyName] = item.value[index] || ''
           } else if (item.value) {
             searchParams[keyName] = item.value || ''
           }
@@ -98,7 +100,7 @@ export default defineComponent({
       search,
       domRef
     }
-  },
+  }
 })
 </script>
 

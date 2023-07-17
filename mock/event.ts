@@ -8,9 +8,9 @@ export default [
         code: 200,
         message: 'ok',
         data: {
-          event: 10,
-        },
+          event: 10
+        }
       }
-    },
-  },
+    }
+  }
 ] as MockMethod[]

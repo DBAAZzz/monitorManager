@@ -1,7 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 import { defineAsyncComponent } from 'vue'
 
-
 export const staticRoutes: Array<RouteRecordRaw> = [
   {
     path: '/login',
@@ -67,6 +66,6 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   },
   {
     path: '/:catchAll(.*)',
-    redirect: '/404',
-  },
+    redirect: '/404'
+  }
 ]

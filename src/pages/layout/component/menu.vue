@@ -1,5 +1,5 @@
-<script setup lang="ts" >
-import { reactive } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue'
 import { menuType } from './type'
 
 const menuList = reactive<menuType[]>([
@@ -18,10 +18,10 @@ const menuList = reactive<menuType[]>([
             id: 3,
             path: '/home',
             menuList: []
-          },
-        ],
-      },
-    ],
+          }
+        ]
+      }
+    ]
   },
   {
     menuName: '异常监控',
@@ -32,13 +32,13 @@ const menuList = reactive<menuType[]>([
         menuName: 'issue 看板',
         id: 5,
         path: '/issueBoard',
-        menuList: [],
+        menuList: []
       },
       {
         menuName: 'issue 列表',
         id: 6,
         path: '/issueList',
-        menuList: [],
+        menuList: []
       },
       {
         menuName: 'api 请求错误列表',
@@ -52,21 +52,15 @@ const menuList = reactive<menuType[]>([
         path: 'errorReport',
         menuList: []
       }
-    ],
+    ]
   }
-]);
+])
 </script>
 
 <template>
   <el-row class="menu">
     <el-col class="menu-col">
-      <el-menu
-        active-text-color="#ffd04b"
-        background-color="#545c64"
-        default-active="2"
-        text-color="#fff"
-        router
-      >
+      <el-menu active-text-color="#ffd04b" background-color="#545c64" default-active="2" text-color="#fff" router>
         <template v-for="menuItem in menuList" :key="menuItem.id">
           <el-sub-menu v-if="menuItem.menuList.length != 0" :index="menuItem.path">
             <template #title>
@@ -77,11 +71,7 @@ const menuList = reactive<menuType[]>([
                 <template #title>
                   <span>{{ subMenu.menuName }}</span>
                 </template>
-                <el-menu-item
-                  v-for="(subMenuItem, subMenuItemIndex) in subMenu.menuList"
-                  :index="subMenuItem.path"
-                  :key="subMenuItemIndex"
-                >
+                <el-menu-item v-for="(subMenuItem, subMenuItemIndex) in subMenu.menuList" :index="subMenuItem.path" :key="subMenuItemIndex">
                   <span>{{ subMenuItem.menuName }}</span>
                 </el-menu-item>
               </el-sub-menu>

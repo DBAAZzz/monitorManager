@@ -1,17 +1,17 @@
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted } from 'vue'
-import * as echarts from 'echarts/core';
+import * as echarts from 'echarts/core'
 import {
   GridComponent,
   GridComponentOption,
   TooltipComponent,
   TooltipComponentOption,
   MarkPointComponent,
-  MarkPointComponentOption,
-} from 'echarts/components';
-import { LineChart, LineSeriesOption } from 'echarts/charts';
-import { UniversalTransition } from 'echarts/features';
-import { CanvasRenderer } from 'echarts/renderers';
+  MarkPointComponentOption
+} from 'echarts/components'
+import { LineChart, LineSeriesOption } from 'echarts/charts'
+import { UniversalTransition } from 'echarts/features'
+import { CanvasRenderer } from 'echarts/renderers'
 
 export default defineComponent({
   props: {
@@ -27,25 +27,13 @@ export default defineComponent({
     }
   },
   setup() {
-    echarts.use([
-      GridComponent,
-      LineChart,
-      TooltipComponent,
-      CanvasRenderer,
-      UniversalTransition,
-      MarkPointComponent
-    ]);
+    echarts.use([GridComponent, LineChart, TooltipComponent, CanvasRenderer, UniversalTransition, MarkPointComponent])
 
-    type EChartsOption = echarts.ComposeOption<
-      GridComponentOption
-      | LineSeriesOption
-      | MarkPointComponentOption
-      | TooltipComponentOption
-    >;
+    type EChartsOption = echarts.ComposeOption<GridComponentOption | LineSeriesOption | MarkPointComponentOption | TooltipComponentOption>
 
-    let myChart;
+    let myChart
 
-    let option: EChartsOption;
+    let option: EChartsOption
 
     option = {
       xAxis: {
@@ -69,7 +57,7 @@ export default defineComponent({
               { type: 'max', name: 'Max' },
               { type: 'min', name: 'Min' }
             ]
-          },
+          }
         },
         {
           name: '错误人数',
@@ -81,15 +69,15 @@ export default defineComponent({
               { type: 'max', name: 'Max' },
               { type: 'min', name: 'Min' }
             ]
-          },
+          }
         }
       ]
-    };
+    }
 
     onMounted(() => {
-      var chartDom = document.getElementById('line')!;
-      myChart = echarts.init(chartDom);
-      option && myChart.setOption(option);
+      var chartDom = document.getElementById('line')!
+      myChart = echarts.init(chartDom)
+      option && myChart.setOption(option)
     })
 
     onUnmounted(() => {
@@ -99,9 +87,7 @@ export default defineComponent({
     window.addEventListener('resize', () => {
       myChart?.resize()
     })
-
-
-  },
+  }
 })
 </script>
 

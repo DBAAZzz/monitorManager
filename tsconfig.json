@@ -10,33 +10,17 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "noImplicitAny": false,
     "baseUrl": ".",
     // 映射列表
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@types": [
-        "src/types/index.ts"
-      ],
-      "@api/*": [
-        "src/api/*"
-      ]
+      "@/*": ["src/*"],
+      "@types": ["src/types/index.ts"],
+      "@api/*": ["src/api/*"]
     },
-    "types": [
-      "element-plus/global"
-    ]
+    "types": ["element-plus/global"]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

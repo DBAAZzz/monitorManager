@@ -1,4 +1,4 @@
-import { InjectionKey } from 'vue';
+import { InjectionKey } from 'vue'
 import { createStore, Store } from 'vuex'
 import { State } from './type'
 
@@ -18,7 +18,7 @@ const modules = {}
 for (const key in files) {
   modules[key.replace(/(\.\/modules\/|\.ts)/g, '')] = files[key].default
 }
-Object.keys(modules).forEach(item => {
+Object.keys(modules).forEach((item) => {
   modules[item]['namespaced'] = true
 })
 

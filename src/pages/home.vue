@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="home">
@@ -11,10 +9,10 @@
 
 <style lang="scss" scoped>
 @charset "UTF-8";
-  .home {
-    background: burlywood;
-    .text {
-      color: red;
-    }
+.home {
+  background: burlywood;
+  .text {
+    color: red;
   }
+}
 </style>

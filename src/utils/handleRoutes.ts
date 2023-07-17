@@ -2,14 +2,14 @@ import { RouteRecordRaw } from 'vue-router'
 
 /**
  * @description 判断当前路由是否包含权限
- * @param permissions 
- * @param route 
- * @returns 
+ * @param permissions
+ * @param route
+ * @returns
  */
 function hasPermission(permissions: Array<string>, route: RouteRecordRaw): boolean {
   if (route.meta && route.meta.permissions) {
     return permissions.some((role: string) => {
-      (route.meta!.permissions as Array<string>).includes(role)
+      ;(route.meta!.permissions as Array<string>).includes(role)
     })
   } else {
     return true
@@ -17,10 +17,10 @@ function hasPermission(permissions: Array<string>, route: RouteRecordRaw): boole
 }
 
 /**
- * @description 
- * @param routes 
- * @param permissions 
- * @returns 
+ * @description
+ * @param routes
+ * @param permissions
+ * @returns
  */
 export function filterAsyncRoutes(routes: Array<RouteRecordRaw>, permissions: Array<string>): Array<RouteRecordRaw> {
   const finallyRoutes: Array<RouteRecordRaw> = []

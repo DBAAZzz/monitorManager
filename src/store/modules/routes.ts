@@ -15,7 +15,7 @@ export default {
   },
   mutations: {
     setCount(state: routesState, count: number) {
-      state.count = count;
+      state.count = count
     },
     setRoutes(state: routesState, routes: Array<RouteRecordRaw>) {
       state.routes = staticRoutes.concat(routes)
@@ -23,12 +23,9 @@ export default {
   },
   actions: {
     async setRoutes({ commit }, permissions: Array<string>): Promise<RouteRecordRaw[]> {
-      const finallyAsyncRoutes = await filterAsyncRoutes(
-        [...asyncRoutes], permissions
-      )
+      const finallyAsyncRoutes = await filterAsyncRoutes([...asyncRoutes], permissions)
       commit('setRoutes', finallyAsyncRoutes)
       return finallyAsyncRoutes
-    },
-
+    }
   }
 }

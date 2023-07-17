@@ -1,0 +1,12 @@
+{
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "prettier.disableLanguages": ["vue"],
+  "tabWidth": 2,
+  "semi": false,
+  "singleQuote": true,
+  "printWidth": 140,
+  "trailingComma": "none",
+  "bracketSpacing": true
+}

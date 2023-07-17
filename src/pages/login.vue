@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import TestVuex from '@/components/TestVuex/index.vue'
-
-
 </script>
 
 <template>

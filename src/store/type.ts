@@ -1,15 +1,15 @@
 import { RouteRecordRaw } from 'vue-router'
 export interface routesState {
-  count: number,
+  count: number
   routes: Array<RouteRecordRaw>
 }
 
 export interface userState {
-  name: string,
+  name: string
   isLogin: boolean
 }
 
 export interface State {
-  routes: routesState,
+  routes: routesState
   user: userState
 }

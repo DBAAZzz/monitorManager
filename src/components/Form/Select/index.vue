@@ -1,24 +1,14 @@
 <template>
   <div class="search-input">
     <span class="label">{{ label }}：</span>
-    <el-select
-      v-model="InputValue"
-      :placeholder="placeholder"
-      @change="changeValue"
-      :clearable="clearable"
-    >
-      <el-option
-        v-for="(item, index) in options"
-        :key="index"
-        :label="item.label"
-        :value="item.value"
-      ></el-option>
+    <el-select v-model="InputValue" :placeholder="placeholder" @change="changeValue" :clearable="clearable">
+      <el-option v-for="(item, index) in options" :key="index" :label="item.label" :value="item.value"></el-option>
     </el-select>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, PropType, ref, watchEffect } from "vue";
+import { defineComponent, onMounted, PropType, ref, watchEffect } from 'vue'
 import type { SelectOptions } from './type'
 export default defineComponent({
   emits: ['changeFunc'],
@@ -49,15 +39,13 @@ export default defineComponent({
     }
   },
   setup(props, { emit }) {
-    let InputValue = ref<string | number>('');
+    let InputValue = ref<string | number>('')
     let changeValue = (value: any): void => {
       emit('changeFunc', value)
     }
-    onMounted(() => {
-      
-    })
+    onMounted(() => {})
     watchEffect(() => {
-      InputValue.value = props.value;
+      InputValue.value = props.value
     })
     return {
       changeValue,

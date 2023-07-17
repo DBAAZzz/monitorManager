@@ -1,8 +1,7 @@
-
-<script setup lang="ts" >
+<script setup lang="ts">
 import Table from '@/components/Form/Table/index.vue'
 import { columnType, tableType } from '@/components/Form/Table/type'
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 import { Test } from './component'
 
 let columnArray: Array<columnType> = [
@@ -18,7 +17,7 @@ let columnArray: Array<columnType> = [
   },
   {
     key: 'name',
-    label: '名字',
+    label: '名字'
   },
   {
     key: 'state',
@@ -41,7 +40,7 @@ let tableData: Array<tableType> = [
     name: 'Tom',
     state: 'California',
     city: 'Los Angeles',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     issue: 'Error',
@@ -49,14 +48,11 @@ let tableData: Array<tableType> = [
     name: 'Tom',
     state: 'California',
     city: 'Los Angeles',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-];
+    address: 'No. 189, Grove St, Los Angeles'
+  }
+]
 
-
-onMounted(() => {
-
-})
+onMounted(() => {})
 </script>
 
 <template>

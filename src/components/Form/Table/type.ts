@@ -1,4 +1,4 @@
-import { ComponentOptionsBase } from "vue";
+import { ComponentOptionsBase } from 'vue'
 
 export interface tableType {
   [propName: string]: any
@@ -9,9 +9,9 @@ interface renderType {
 }
 
 export interface columnType {
-  key: string,
+  key: string
   label: string
-  width?: string,
-  align?: string,
+  width?: string
+  align?: string
   slotEl?: any
 }

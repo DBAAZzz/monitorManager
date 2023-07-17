@@ -42,7 +42,7 @@ export default defineComponent({
       currentPage,
       pageSize
     }
-  },
+  }
 })
 </script>
 

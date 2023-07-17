@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watchEffect } from "vue";
+import { defineComponent, ref, watchEffect } from 'vue'
 
 export default defineComponent({
   emits: ['inputFunc', 'changeFunc'],
@@ -31,7 +31,7 @@ export default defineComponent({
     }
   },
   setup(props, { emit }) {
-    let InputValue = ref('');
+    let InputValue = ref('')
     let changeValue = (emitName: string, value: any): void => {
       if (emitName == 'change') {
         emit('changeFunc', value)
@@ -40,7 +40,7 @@ export default defineComponent({
       }
     }
     watchEffect((): void => {
-      InputValue.value = props.value;
+      InputValue.value = props.value
     })
     return {
       InputValue,

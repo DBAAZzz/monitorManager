@@ -10,9 +10,8 @@ export const Test = {
   render(props) {
     return (
       <div>
-        <p >{props.objectValue}</p>
+        <p>{props.objectValue}</p>
       </div>
     )
   }
 }
-

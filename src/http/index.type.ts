@@ -1,26 +1,17 @@
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 export interface RequestProxyType {
-  get(
-    url: string,
-    config?: AxiosRequestConfig,
-    customConfig?: CustomConfigType
-  ): Promise<AxiosResponse>
+  get(url: string, config?: AxiosRequestConfig, customConfig?: CustomConfigType): Promise<AxiosResponse>
 
-  post(
-    url: string,
-    config?: AxiosRequestConfig,
-    customConfig?: CustomConfigType
-  ): Promise<AxiosResponse>
-
+  post(url: string, config?: AxiosRequestConfig, customConfig?: CustomConfigType): Promise<AxiosResponse>
 }
 
 export interface CustomConfigType {
-  isNeedToken?: boolean,
-  isNeedLoading?: boolean,
+  isNeedToken?: boolean
+  isNeedLoading?: boolean
   isNeedShowError?: boolean
 }
 
 export interface RequestType {
-  request(config: AxiosRequestConfig, customConfig?: CustomConfigType): Promise<AxiosResponse>;
+  request(config: AxiosRequestConfig, customConfig?: CustomConfigType): Promise<AxiosResponse>
 }

@@ -7,7 +7,8 @@
     "serve": "vite preview",
     "release": "standard-version",
     "release:major": "standard-version -r major",
-    "release:patch": "standard-version -r patch"
+    "release:patch": "standard-version -r patch",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
@@ -28,10 +29,11 @@
     "@vitejs/plugin-vue-jsx": "^1.2.0",
     "commitizen": "^4.2.4",
     "husky": "3.1.0",
+    "prettier": "^3.0.0",
     "sass": "^1.43.4",
     "standard-version": "^9.3.2",
     "typescript": "^4.4.3",
-    "vite": "^2.6.4",
+    "vite": "^4.4.0",
     "vite-plugin-components": "^0.13.3",
     "vite-plugin-mock": "^2.9.6",
     "vue-tsc": "^0.3.0"

@@ -1,24 +1,20 @@
-import {
-  RequestProxyType,
-  CustomConfigType,
-  RequestType
-} from "./index.type";
-import Request from "./request";
+import { RequestProxyType, CustomConfigType, RequestType } from './index.type'
+import Request from './request'
 import { ElLoading, ElMessage, ILoadingInstance } from 'element-plus'
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from 'axios'
 
-let loadingInstance: ILoadingInstance;
+let loadingInstance: ILoadingInstance
 
 class Http implements RequestProxyType {
-  private axios: RequestType;
+  private axios: RequestType
   private defaultCustomConfig: CustomConfigType = {
     isNeedLoading: false,
     isNeedToken: true,
     isNeedShowError: true
-  };
+  }
 
   constructor(config: AxiosRequestConfig) {
-    this.axios = new Request(config);
+    this.axios = new Request(config)
   }
 
   /**
@@ -26,12 +22,9 @@ class Http implements RequestProxyType {
    * @param config 配置项
    * @param customConfig 自定义配置
    */
-  private async transfromRquest(
-    config: AxiosRequestConfig,
-    customConfig: CustomConfigType = {}
-  ): Promise<AxiosResponse> {
+  private async transfromRquest(config: AxiosRequestConfig, customConfig: CustomConfigType = {}): Promise<AxiosResponse> {
     // 传入的customConfig覆盖defaultCustomConfig
-    customConfig = { ...this.defaultCustomConfig, ...customConfig };
+    customConfig = { ...this.defaultCustomConfig, ...customConfig }
     try {
       if (customConfig.isNeedLoading) {
         this.handleLoading()
@@ -39,9 +32,9 @@ class Http implements RequestProxyType {
       if (customConfig.isNeedToken) {
         this.handleToken(config)
       }
-      const result = await this.axios.request(config);
+      const result = await this.axios.request(config)
       loadingInstance?.close()
-      return result;
+      return result
     } catch (error: any) {
       let { message } = error
       loadingInstance?.close()
@@ -49,7 +42,7 @@ class Http implements RequestProxyType {
       this.handleError(error)
       return Promise.reject({
         ...error
-      });
+      })
     }
   }
 
@@ -57,9 +50,7 @@ class Http implements RequestProxyType {
   private handleError(error: any) {
     let { code, message } = error
     if (code == 300) {
-
     } else if (code == 400) {
-
     }
     // ...
   }
@@ -70,14 +61,15 @@ class Http implements RequestProxyType {
       lock: true,
       text: 'Loading',
       spinner: 'el-icon-loading',
-      background: 'rgba(0, 0, 0, 0.7)',
+      background: 'rgba(0, 0, 0, 0.7)'
     })
   }
 
   private handleToken(config: AxiosRequestConfig) {
-    let token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA5MjljNjQwLTg3OWQtMTFlYi1iNGExLTMzM2ZhNTQ5ZjVlYSIsImlhdCI6MTYzNzA1NDQzNywiZXhwIjoxNjM3MTQwODM3fQ.05n7AWbMZWvCFLmPHmv0UECaiqChTkzTmmowyTET8wg'
+    let token: string =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA5MjljNjQwLTg3OWQtMTFlYi1iNGExLTMzM2ZhNTQ5ZjVlYSIsImlhdCI6MTYzNzA1NDQzNywiZXhwIjoxNjM3MTQwODM3fQ.05n7AWbMZWvCFLmPHmv0UECaiqChTkzTmmowyTET8wg'
     config.headers = {
-      'authorization': `Bearer ${token}`
+      authorization: `Bearer ${token}`
     }
   }
 
@@ -86,11 +78,14 @@ class Http implements RequestProxyType {
     config?: AxiosRequestConfig,
     customConfig: CustomConfigType = this.defaultCustomConfig
   ): Promise<AxiosResponse> {
-    return this.transfromRquest({
-      url,
-      method: 'post',
-      ...config
-    }, customConfig)
+    return this.transfromRquest(
+      {
+        url,
+        method: 'post',
+        ...config
+      },
+      customConfig
+    )
   }
 
   public async get(
@@ -98,11 +93,14 @@ class Http implements RequestProxyType {
     config?: AxiosRequestConfig,
     customConfig: CustomConfigType = this.defaultCustomConfig
   ): Promise<AxiosResponse> {
-    return this.transfromRquest({
-      url,
-      method: 'get',
-      ...config
-    }, customConfig)
+    return this.transfromRquest(
+      {
+        url,
+        method: 'get',
+        ...config
+      },
+      customConfig
+    )
   }
 }
 

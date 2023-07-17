@@ -1,4 +1,4 @@
 export type SelectOptions = {
-  label: string,
+  label: string
   value: any
 }
