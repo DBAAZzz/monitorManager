@@ -1,9 +1,10 @@
 import { RequestProxyType, CustomConfigType, RequestType } from './index.type'
 import Request from './request'
-import { ElLoading, ElMessage, ILoadingInstance } from 'element-plus'
+import { ElLoading, ElMessage } from 'element-plus'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { LoadingInstance } from 'element-plus/es/components/loading/src/loading'
 
-let loadingInstance: ILoadingInstance
+let loadingInstance: LoadingInstance
 
 class Http implements RequestProxyType {
   private axios: RequestType

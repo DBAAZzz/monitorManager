@@ -30,7 +30,8 @@ export default defineConfig(({ command, mode }) => {
         '@': path.resolve(__dirname, 'src'),
         '@types': path.resolve(__dirname, 'src/types/index.ts'),
         '@api': path.resolve(__dirname, 'src/api'),
-        '@assets': path.resolve(__dirname, 'src/assets')
+        '@assets': path.resolve(__dirname, 'src/assets'),
+        '@stores': path.resolve(__dirname, 'src/stores')
       },
       dedupe: ['vue']
     },

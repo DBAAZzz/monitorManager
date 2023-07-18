@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
-import store from '@/store'
+import { useRouterStore } from '@/stores/modules/routers'
+import { useUserStore } from '@/stores/modules/user'
 import router from '@/router'
 
 /**
@@ -7,10 +8,13 @@ import router from '@/router'
  * 但是时间点会晚于 router.beforeEach 以及非同步路由组件解析以后才被调用
  */
 router.beforeResolve(async (to, from, next) => {
-  if (store.getters['user/isLogin']) {
+  const routerStore = useRouterStore()
+  const userStore = useUserStore()
+
+  if (userStore.isLogin) {
     let accessRoutes: Array<RouteRecordRaw> = []
-    if (store.getters['routes/getRoutes'].length == 0) {
-      accessRoutes = await store.dispatch('routes/setRoutes', ['admin'])
+    if (routerStore.routes.length == 0) {
+      accessRoutes = await routerStore.setRoutes(['admin'])
       addRoutes(accessRoutes)
       /**
        * vueRouter4.0 去除了 addRoutes 方法

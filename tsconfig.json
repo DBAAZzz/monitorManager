@@ -18,7 +18,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@types": ["src/types/index.ts"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@stores/*": ["src/stores/*"]
     },
     "types": ["element-plus/global"]
   },
