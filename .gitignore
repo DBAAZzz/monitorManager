@@ -4,3 +4,5 @@ dist
 dist-ssr
 *.local
 monitorManager
+components.d.ts
+auto-imports.d.ts
