@@ -1,6 +1,6 @@
 export interface menuType {
-  menuName: string
+  name: string
   id: number
-  path: string
-  menuList: Array<menuType>
+  path: string | null
+  childrenList: Array<menuType>
 }

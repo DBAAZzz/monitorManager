@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import userPic from '@/assets/images/user.gif'
+import userPic from '@assets/images/user.gif'
+import Logo from '@assets/images/logo.png'
 </script>
 
 <template>
   <div class="header">
+    <div class="header_logo">
+      <img :src="Logo" />
+    </div>
     <div class="header_user">
       <img class="header_user_pic" :src="userPic" />
       <p class="header_user_name">DBAAZzz</p>
@@ -20,6 +24,15 @@ import userPic from '@/assets/images/user.gif'
   width: 100%;
   height: 60px;
   background: #545c64;
+  &_logo {
+    @include center;
+    padding-left: 30px;
+    width: 150px;
+    height: 100%;
+    > img {
+      width: 100%;
+    }
+  }
   &_user {
     position: absolute;
     display: flex;

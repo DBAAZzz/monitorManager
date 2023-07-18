@@ -1,56 +1,65 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import SidebarItem from './SidebarItem.vue'
+import { computed, reactive } from 'vue'
+import { useRoute } from 'vue-router'
 import { menuType } from './type'
+const route = useRoute()
 
-const menuList = reactive<menuType[]>([
+const activeMenu = computed(() => {
+  const path = route.path
+  let activePath = path
+  return activePath
+})
+
+const childrenList = reactive<menuType[]>([
   {
-    menuName: '用户中心',
+    name: '用户中心',
     id: 1,
     path: '/user',
-    menuList: [
+    childrenList: [
       {
-        menuName: '用户列表',
+        name: '用户列表',
         id: 2,
         path: '',
-        menuList: [
+        childrenList: [
           {
-            menuName: '测试',
+            name: '测试',
             id: 3,
             path: '/home',
-            menuList: []
+            childrenList: []
           }
         ]
       }
     ]
   },
   {
-    menuName: '异常监控',
+    name: '异常监控',
     id: 4,
-    path: '/activity',
-    menuList: [
+    path: '/activaty',
+    childrenList: [
       {
-        menuName: 'issue 看板',
+        name: 'issue 看板',
         id: 5,
         path: '/issueBoard',
-        menuList: []
+        childrenList: []
       },
       {
-        menuName: 'issue 列表',
+        name: 'issue 列表',
         id: 6,
         path: '/issueList',
-        menuList: []
+        childrenList: []
       },
       {
-        menuName: 'api 请求错误列表',
+        name: 'api 请求错误列表',
         id: 7,
         path: '/apiError',
-        menuList: []
+        childrenList: []
       },
       {
-        menuName: '错误报告',
+        name: '错误报告',
         id: 8,
-        path: 'errorReport',
-        menuList: []
+        path: '/errorReport',
+        childrenList: []
       }
     ]
   }
@@ -60,30 +69,17 @@ const menuList = reactive<menuType[]>([
 <template>
   <el-row class="menu">
     <el-col class="menu-col">
-      <el-menu active-text-color="#ffd04b" background-color="#545c64" default-active="2" text-color="#fff" router>
-        <template v-for="menuItem in menuList" :key="menuItem.id">
-          <el-sub-menu v-if="menuItem.menuList.length != 0" :index="menuItem.path">
-            <template #title>
-              <span>{{ menuItem.menuName }}</span>
-            </template>
-            <template v-for="subMenu in menuItem.menuList" :key="subMenu.id">
-              <el-sub-menu v-if="subMenu.menuList.length != 0" :index="menuItem.path">
-                <template #title>
-                  <span>{{ subMenu.menuName }}</span>
-                </template>
-                <el-menu-item v-for="(subMenuItem, subMenuItemIndex) in subMenu.menuList" :index="subMenuItem.path" :key="subMenuItemIndex">
-                  <span>{{ subMenuItem.menuName }}</span>
-                </el-menu-item>
-              </el-sub-menu>
-              <el-menu-item v-else :index="subMenu.path">
-                <span>{{ subMenu.menuName }}</span>
-              </el-menu-item>
-            </template>
-          </el-sub-menu>
-          <el-menu-item v-else :index="menuItem.path">
-            <span>{{ menuItem.menuName }}</span>
-          </el-menu-item>
-        </template>
+      <el-menu
+        active-text-color="#ffd04b"
+        background-color="#545c64"
+        text-color="#fff"
+        mode="vertical"
+        :unique-opened="true"
+        :default-active="activeMenu"
+        :collapse-transition="false"
+        router
+      >
+        <sidebar-item v-for="(route, index) in childrenList" :key="index" :item="route" :base-path="route.path"> </sidebar-item>
       </el-menu>
     </el-col>
   </el-row>
