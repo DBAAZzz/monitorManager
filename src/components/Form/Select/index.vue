@@ -7,51 +7,48 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, PropType, ref, watchEffect } from 'vue'
+<script lang="ts" setup>
+import { PropType, ref, watchEffect } from 'vue'
+import { isString } from '@vue/shared'
 import type { SelectOptions } from './type'
-export default defineComponent({
-  emits: ['changeFunc'],
-  props: {
-    label: {
-      type: String,
-      required: false,
-      default: '标签页'
-    },
-    placeholder: {
-      type: String,
-      required: false,
-      default: '请输入内容'
-    },
-    options: {
-      type: Array as PropType<SelectOptions[]>,
-      required: false,
-      default: []
-    },
-    value: {
-      type: String,
-      default: ''
-    },
-    clearable: {
-      type: Boolean,
-      required: false,
-      default: true
-    }
+const props = defineProps({
+  label: {
+    type: String,
+    required: false,
+    default: '标签页'
   },
-  setup(props, { emit }) {
-    let InputValue = ref<string | number>('')
-    let changeValue = (value: any): void => {
-      emit('changeFunc', value)
-    }
-    onMounted(() => {})
-    watchEffect(() => {
-      InputValue.value = props.value
-    })
-    return {
-      changeValue,
-      InputValue
-    }
+  placeholder: {
+    type: String,
+    required: false,
+    default: '请输入内容'
+  },
+  options: {
+    type: Array as PropType<SelectOptions[]>,
+    required: false,
+    default: []
+  },
+  value: {
+    type: String,
+    default: ''
+  },
+  clearable: {
+    type: Boolean,
+    required: false,
+    default: true
   }
+})
+const emit = defineEmits({
+  changeFunc: (value: string) => isString(value)
+})
+
+let InputValue = ref<string | number>('')
+
+let changeValue = (value: string): void => {
+  emit('changeFunc', value)
+}
+
+watchEffect(() => {
+  InputValue.value = props.value
 })
 </script>
 

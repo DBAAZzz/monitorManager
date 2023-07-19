@@ -11,51 +11,44 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, reactive, ref, watchEffect } from 'vue'
+<script lang="ts" setup>
+import { ref } from 'vue'
 import dayjs from 'dayjs'
-export default defineComponent({
-  emits: ['changeFunc'],
-  props: {
-    label: {
-      type: String,
-      required: false,
-      default: '标签页'
-    },
-    startPlaceholder: {
-      type: String,
-      required: false,
-      default: '开始日期'
-    },
-    endPlaceholder: {
-      type: String,
-      required: false,
-      default: '结束日期'
-    },
-    value: {
-      type: Array,
-      default: []
-    }
+
+defineProps({
+  label: {
+    type: String,
+    required: false,
+    default: '标签页'
   },
-  setup(props, { emit }) {
-    let InputValue = ref<Date[]>([])
-    let changeValue = (value: any): void => {
-      if (value) {
-        emit('changeFunc', [dayjs(value[0]).format('YYYY-MM-DD HH:mm:ss'), dayjs(value[1]).format('YYYY-MM-DD HH:mm:ss')])
-      } else {
-        emit('changeFunc', [null, null])
-      }
-    }
-    watchEffect((): void => {
-      InputValue.value = props.value as Array<Date>
-    })
-    onMounted(() => {})
-    return {
-      InputValue,
-      changeValue
-    }
+  startPlaceholder: {
+    type: String,
+    required: false,
+    default: '开始日期'
+  },
+  endPlaceholder: {
+    type: String,
+    required: false,
+    default: '结束日期'
+  },
+  value: {
+    type: Array,
+    default: []
   }
 })
+
+const emit = defineEmits({
+  changeFunc: (date: Array<string | null>) => true
+})
+
+let InputValue = ref('')
+let changeValue = (value: any): void => {
+  if (value) {
+    emit('changeFunc', [dayjs(value[0]).format('YYYY-MM-DD HH:mm:ss'), dayjs(value[1]).format('YYYY-MM-DD HH:mm:ss')])
+  } else {
+    emit('changeFunc', [null, null])
+  }
+}
 </script>
 
 <style lang="scss" scoped>

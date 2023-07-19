@@ -1,5 +1,5 @@
 export type RefObject = {
-  list: Array<Object>
+  list: Array<Object | null>
 }
 
 export type ComponentRef = {

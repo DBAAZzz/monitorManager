@@ -10,44 +10,43 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, watchEffect } from 'vue'
+<script lang="ts" setup>
+import { isString } from '@vue/shared'
+import { ref } from 'vue'
 
-export default defineComponent({
-  emits: ['inputFunc', 'changeFunc'],
-  props: {
-    label: {
-      type: String,
-      required: false,
-      default: '标签页'
-    },
-    placeholder: {
-      type: String,
-      required: false,
-      default: '请输入内容'
-    },
-    value: {
-      default: ''
-    }
+type funType = 'change' | 'input'
+
+defineProps({
+  label: {
+    type: String,
+    required: false,
+    default: '标签页'
   },
-  setup(props, { emit }) {
-    let InputValue = ref('')
-    let changeValue = (emitName: string, value: any): void => {
-      if (emitName == 'change') {
-        emit('changeFunc', value)
-      } else if (emitName == 'input') {
-        emit('inputFunc', value)
-      }
-    }
-    watchEffect((): void => {
-      InputValue.value = props.value
-    })
-    return {
-      InputValue,
-      changeValue
-    }
+  placeholder: {
+    type: String,
+    required: false,
+    default: '请输入内容'
+  },
+  value: {
+    type: String,
+    default: ''
   }
 })
+
+const emit = defineEmits({
+  inputFunc: (value: string) => isString(value),
+  changeFunc: (value: string) => isString(value)
+})
+
+let InputValue = ref('')
+
+let changeValue = (emitName: funType, value: any): void => {
+  if (emitName == 'change') {
+    emit('changeFunc', value)
+  } else if (emitName == 'input') {
+    emit('inputFunc', value)
+  }
+}
 </script>
 
 <style lang="scss" scoped>
